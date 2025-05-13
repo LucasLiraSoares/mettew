@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay">
+        <div class="container">
+            <img src="perfil.jpg" alt="Perfil" class="perfil-img" />
+            <h1>@SeuUsuario</h1>
+            <div class="carousel">
+                <img src="perfil.jpg" alt="Prévia 1" class="carousel-image active">
+                <img src="background.jpg" alt="Prévia 2" class="carousel-image">
+                <img src="perfil.jpg" alt="Prévia 3" class="carousel-image">
+                <button class="carousel-btn left">&#10094;</button>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+            <div class="buttons">
+                <a href="#" class="btn"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/> Instagram</a>
+                <a href="#" class="btn"><img src="https://img.icons8.com/ios-filled/24/ffffff/onlyfans.png"/> OnlyFans</a>
+                <a href="#" class="btn"><img src="https://img.icons8.com/ios-filled/24/ffffff/link.png"/> Link Alternativo</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const images = document.querySelectorAll('.carousel-image');
+        const prevBtn = document.querySelector('.carousel-btn.left');
+        const nextBtn = document.querySelector('.carousel-btn.right');
+        let current = 0;
+
+        function updateCarousel() {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === current);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            current = (current - 1 + images.length) % images.length;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            current = (current + 1) % images.length;
+            updateCarousel();
+        });
+
+        updateCarousel();
+    </script>
+</body>
+</html>
